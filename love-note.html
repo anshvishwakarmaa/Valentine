@@ -121,6 +121,63 @@ top:-20px;
 right:-20px;
 width:90px;
 }
+
+/* Page fade transition */
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+body.fade-in{
+animation:fadeIn 0.8s ease forwards;
+}
+
+body.fade-out{
+animation:fadeOut 0.8s ease forwards;
+}
+
+@keyframes fadeOut{
+from{
+opacity:1;
+}
+to{
+opacity:0;
+}
+}
+
+/* Back button */
+.back-btn{
+position:fixed;
+bottom:40px;
+right:40px;
+width:50px;
+height:50px;
+background:#e75480;
+color:white;
+border:none;
+border-radius:50%;
+font-size:24px;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 5px 15px rgba(231,84,128,0.3);
+transition:all 0.3s ease;
+z-index:10;
+}
+
+.back-btn:hover{
+transform:scale(1.1);
+box-shadow:0 8px 20px rgba(231,84,128,0.5);
+}
+
+.back-btn:active{
+transform:scale(0.95);
+}
 </style>
 </head>
 
@@ -149,6 +206,22 @@ Suno suno meri baat suno pata nhi tum pura padhogi ya nahi par fir bhi mai janta
 
 </div>
 </div>
+
+<button class="back-btn" onclick="goBack()">←</button>
+
+<script>
+// Fade in animation on page load
+window.addEventListener('load', function(){
+document.body.classList.add('fade-in');
+});
+
+function goBack(){
+document.body.classList.add('fade-out');
+setTimeout(()=>{
+window.location.href = 'envelope.html';
+}, 800);
+}
+</script>
 
 </body>
 </html>
