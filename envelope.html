@@ -119,6 +119,20 @@ transform:rotateX(180deg);
 .envelope.open .letter{
 bottom:40px;
 }
+
+/* Page fade transition */
+@keyframes fadeOut{
+from{
+opacity:1;
+}
+to{
+opacity:0;
+}
+}
+
+body.fade-out{
+animation:fadeOut 0.8s ease forwards;
+}
 </style>
 </head>
 
@@ -143,12 +157,19 @@ bottom:40px;
 function openEnvelope(){
 document.getElementById("envelope").classList.add("open");
 setTimeout(()=>{
-window.location.href = "love-note.html";
+navigateToPage("love-note.html");
 }, 800);
 }
 
 function goToNote(){
-window.location.href = "love-note.html";
+navigateToPage("love-note.html");
+}
+
+function navigateToPage(url){
+document.body.classList.add("fade-out");
+setTimeout(()=>{
+window.location.href = url;
+}, 800);
 }
 </script>
 
